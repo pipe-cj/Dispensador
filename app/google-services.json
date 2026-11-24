@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "746140657191",
+    "firebase_url": "https://dispensador-iot-1c43c-default-rtdb.firebaseio.com",
+    "project_id": "dispensador-iot-1c43c",
+    "storage_bucket": "dispensador-iot-1c43c.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:746140657191:android:159e9fa5fce64650e91002",
+        "android_client_info": {
+          "package_name": "com.example.dispensador"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBzVQ5yzj-SuHYFSp3ES0rwlMYuK67W_lg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,30 @@
+=========================================================
+1) build.gradle.kts  (el de AFUERA, "Project: Dispensador")
+=========================================================
+Dentro de plugins { ... } agrega esta linea al final:
+
+    id("com.google.gms.google-services") version "4.4.2" apply false
+
+
+=========================================================
+2) app/build.gradle.kts  (el de ADENTRO, "Module :app")
+=========================================================
+a) Dentro de plugins { ... } agrega al final:
+
+    id("com.google.gms.google-services")
+
+b) Dentro de android { ... } agrega:
+
+    buildFeatures {
+        viewBinding = true
+    }
+
+c) Dentro de dependencies { ... } agrega al final:
+
+    implementation(platform("com.google.firebase:firebase-bom:33.7.0"))
+    implementation("com.google.firebase:firebase-auth")
+    implementation("com.google.firebase:firebase-database")
+    implementation("com.google.android.material:material:1.12.0")
+    implementation("androidx.recyclerview:recyclerview:1.3.2")
+
+Despues: boton "Sync Now" (barra amarilla arriba).

@@ -1,0 +1,109 @@
+{
+  "rules": {
+    ".read": false,
+    ".write": false,
+    "usuarios": {
+      "$uid": {
+        ".read": "auth != null && auth.uid === $uid",
+        ".write": "auth != null && auth.uid === $uid",
+        ".validate": "newData.hasChildren(['nombre', 'correo'])",
+        "nombre": {
+          ".validate": "newData.isString() && newData.val().length >= 2 && newData.val().length <= 40"
+        },
+        "correo": {
+          ".validate": "newData.isString() && newData.val().toLowerCase() === auth.token.email.toLowerCase()"
+        },
+        "modo": {
+          ".validate": "newData.val() === 'control' || newData.val() === 'dispensador'"
+        },
+        "dispensadorId": {
+          ".validate": "newData.isString() && newData.val().matches(/^DISP-[0-9]+$/)"
+        },
+        "$otro": {
+          ".validate": false
+        }
+      }
+    },
+    "dispensadores": {
+      "$id": {
+        ".read": "auth != null && root.child('usuarios').child(auth.uid).child('dispensadorId').val() === $id",
+        "estado": {
+          ".write": "auth != null && root.child('usuarios').child(auth.uid).child('dispensadorId').val() === $id",
+          "nivel": {
+            ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() <= 100"
+          },
+          "enLinea": {
+            ".validate": "newData.isBoolean()"
+          },
+          "ultimaRacion": {
+            ".validate": "newData.isNumber() || newData.isString()"
+          },
+          "$otro": {
+            ".validate": false
+          }
+        },
+        "comando": {
+          ".write": "auth != null && root.child('usuarios').child(auth.uid).child('dispensadorId').val() === $id",
+          ".validate": "newData.hasChildren(['tipo', 'porcion', 'uid', 'timestamp'])",
+          "tipo": {
+            ".validate": "newData.val() === 'dispensar' || newData.val() === 'recargar'"
+          },
+          "porcion": {
+            ".validate": "newData.val() === 'chica' || newData.val() === 'mediana' || newData.val() === 'grande'"
+          },
+          "uid": {
+            ".validate": "newData.val() === auth.uid"
+          },
+          "timestamp": {
+            ".validate": "newData.isNumber() && newData.val() <= now + 60000"
+          },
+          "$otro": {
+            ".validate": false
+          }
+        },
+        "horarios": {
+          ".write": "auth != null && root.child('usuarios').child(auth.uid).child('dispensadorId').val() === $id",
+          "$hId": {
+            ".validate": "newData.hasChildren(['hora', 'porcion', 'activo'])",
+            "hora": {
+              ".validate": "newData.isString() && newData.val().matches(/^([01][0-9]|2[0-3]):[0-5][0-9]$/)"
+            },
+            "porcion": {
+              ".validate": "newData.val() === 'chica' || newData.val() === 'mediana' || newData.val() === 'grande'"
+            },
+            "activo": {
+              ".validate": "newData.isBoolean()"
+            },
+            "$otro": {
+              ".validate": false
+            }
+          }
+        },
+        "historial": {
+          "$eId": {
+            ".write": "auth != null && root.child('usuarios').child(auth.uid).child('dispensadorId').val() === $id && !data.exists() && newData.exists()",
+            ".validate": "newData.hasChildren(['fecha', 'porcion', 'origen', 'uid'])",
+            "fecha": {
+              ".validate": "newData.isNumber() || newData.isString()"
+            },
+            "porcion": {
+              ".validate": "newData.val() === 'chica' || newData.val() === 'mediana' || newData.val() === 'grande'"
+            },
+            "origen": {
+              ".validate": "newData.isString() && newData.val().length <= 20"
+            },
+            "uid": {
+              ".validate": "newData.isString()"
+            },
+            "$otro": {
+              ".validate": false
+            }
+          },
+          ".indexOn": [
+            "fecha"
+          ]
+        }
+      }
+    }
+  }
+}

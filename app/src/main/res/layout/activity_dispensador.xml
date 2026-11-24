@@ -28,6 +28,14 @@
             android:textColor="@color/ink" />
 
         <TextView
+            android:id="@+id/txtFirebase"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="○ Conectando a Firebase..."
+            android:textStyle="bold" />
+
+        <TextView
             android:id="@+id/txtBluetooth"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

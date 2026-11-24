@@ -45,23 +45,26 @@ Teléfono A (Modo Control) ⇄ WiFi ⇄ Firebase (Auth + Realtime DB) ⇄ WiFi �
 
 1. Abrir el proyecto en Android Studio y poner `google-services.json` en `app/`.
 2. En Firebase: activar *Correo/contraseña* y publicar `database.rules.json`.
-3. Subir `esp32_dispensador/esp32_dispensador.ino` al ESP32 (placa *ESP32 Dev Module*, librería *ESP32Servo*).
+3. Subir `esp32_dispensador/esp32_dispensador.ino` al ESP32 (placa *ESP32 Dev Module*, librería *ESP32Servo*, driver CP210x).
 4. Vincular el teléfono B con `DISP-01` en Ajustes > Bluetooth.
 5. Teléfono A → Modo Control. Teléfono B → Modo Dispensador.
 
 ## Circuito
 
-| Servo SG90 | ESP32 |
+El servo tiene alimentación independiente de 5 V y el ESP32 solo envía la señal PWM. Así los picos de corriente del motor (hasta ~600 mA al arrancar) no reinician el microcontrolador.
+
+| Cable | Conexión |
 |---|---|
-| Café / negro | GND |
-| Rojo | VIN (5 V) |
-| Naranja / amarillo | GPIO 13 |
+| Servo rojo | 5 V de la fuente externa (en el prototipo, 5 V del Arduino UNO) |
+| Servo café | GND de la fuente externa |
+| Servo amarillo | P13 del ESP32 (NodeMCU ESP-32S) |
+| GND del ESP32 | GND de la fuente externa (tierra común) |
 
 ## Equipo
 
-- Felipe Carvajal (Pipe): base del proyecto, integración, Firebase y ESP32
+- Felipe Carvajal (Pipe): base del proyecto, integración, Firebase, conexión Bluetooth y ESP32
 - Tomás: login y seguridad
 - Jorge: modo Control, diseño y plan de pruebas
-- Luis: modo Dispensador
+- Luis: lógica del modo Dispensador (comandos, cola de raciones, horarios, nivel y estado en línea)
 
 Documentos: `docs/mockup_pantallas.html` (mockup) y `docs/plan_de_pruebas.md` (pruebas).

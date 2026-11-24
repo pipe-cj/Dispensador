@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mockup – Modo Control del dispensador</title>
+<style>
+:root{--ink:#1F2A44;--teal:#1B998B;--amber:#FFB400;--fondo:#F3F6FA;--alerta:#D64545;--af:#FDECEC;--sub:#5B6785;color-scheme:light}
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,sans-serif;background:#DDE3EE;color:var(--ink);padding:32px 16px}
+h1{font-size:22px;margin:0 0 4px}p.s{margin:0 0 28px;color:var(--sub)}
+.fila{display:flex;flex-wrap:wrap;gap:28px;justify-content:center;align-items:flex-start}
+.col{display:flex;flex-direction:column;align-items:center;gap:10px}
+.col b{font-size:14px}
+.tel{width:270px;height:540px;background:var(--fondo);border:8px solid #111827;border-radius:30px;overflow:hidden;display:flex;flex-direction:column;position:relative}
+.bar{background:var(--ink);color:#fff;padding:12px 14px;font-size:14px;font-weight:600}.bar small{display:block;font-weight:400;color:#B8C2D9;font-size:11px}
+.cuerpo{flex:1;padding:14px;overflow:hidden;position:relative}
+.nav{display:flex;background:#fff;border-top:1px solid #dde3ee}.nav span{flex:1;text-align:center;font-size:11px;padding:9px 0;color:var(--sub)}.nav .on{color:var(--teal);font-weight:700}
+.chip{display:inline-block;padding:4px 10px;border-radius:99px;font-size:11px;border:1px solid #c5cde0;margin-right:4px}
+.chip.on{background:var(--teal);color:#fff;border-color:var(--teal)}
+.ring{width:130px;height:130px;border-radius:50%;margin:14px auto;display:grid;place-items:center;background:conic-gradient(var(--teal) var(--p),#dbe2ee 0)}
+.ring div{width:100px;height:100px;border-radius:50%;background:var(--fondo);display:grid;place-items:center;text-align:center;font-size:28px;font-weight:700;line-height:1}.ring small{font-size:10px;font-weight:400;color:var(--sub)}
+.btn{background:var(--teal);color:#fff;border-radius:10px;text-align:center;padding:16px;font-weight:700;margin-top:12px}
+.card{background:#fff;border-radius:12px;padding:12px 14px;margin-bottom:8px;display:flex;align-items:center;justify-content:space-between}
+.card b{font-size:20px}.card small{display:block;color:var(--sub);font-size:11px}
+.sw{width:34px;height:18px;border-radius:9px;background:#c5cde0;position:relative}.sw.on{background:var(--teal)}.sw:after{content:"";position:absolute;top:2px;left:2px;width:14px;height:14px;border-radius:50%;background:#fff}.sw.on:after{left:18px}
+.fab{position:absolute;right:14px;bottom:14px;width:46px;height:46px;border-radius:50%;background:var(--amber);display:grid;place-items:center;font-size:24px;font-weight:700}
+.ban{background:var(--af);color:var(--alerta);padding:9px 10px;border-radius:8px;font-size:11px;margin-bottom:8px}
+.c{color:var(--sub);font-size:11px;text-align:center}
+.flow{max-width:760px;margin:36px auto 0;background:#fff;border-radius:12px;padding:18px 22px;font-size:14px;line-height:1.6}
+.flow code{background:#eef1f7;padding:1px 6px;border-radius:4px}
+</style></head><body>
+<h1>Mockup – Modo Control (dueño)</h1>
+<p class="s">Dispensador de comida IoT · TI3042 U2 · Autor: Jorge · Pantallas del flujo del dueño y su navegación</p>
+<div class="fila">
+
+<div class="col"><b>1. Control</b><div class="tel"><div class="bar">Mi dispensador<small>DISP-01</small></div><div class="cuerpo">
+<span class="chip on">En línea</span><div class="ring" style="--p:72%"><div><span>72%<br><small>de comida</small></span></div></div>
+<div class="c">Última ración: 19/11 08:00</div>
+<div style="font-size:12px;font-weight:700;margin:16px 0 6px">Tamaño de la porción</div>
+<span class="chip">Chica</span><span class="chip on">Mediana</span><span class="chip">Grande</span>
+<div class="btn">Dispensar ahora</div></div>
+<div class="nav"><span class="on">Control</span><span>Horarios</span><span>Historial</span></div></div></div>
+
+<div class="col"><b>2. Control – nivel bajo</b><div class="tel"><div class="bar">Mi dispensador<small>DISP-01</small></div><div class="cuerpo">
+<div class="ban">Queda poca comida. Recarga el dispensador pronto.</div>
+<span class="chip on">En línea</span><div class="ring" style="--p:15%;background:conic-gradient(var(--alerta) 15%,#dbe2ee 0)"><div><span>15%<br><small>de comida</small></span></div></div>
+<div class="c">Última ración: 19/11 12:30</div>
+<div style="font-size:12px;font-weight:700;margin:16px 0 6px">Tamaño de la porción</div>
+<span class="chip on">Chica</span><span class="chip">Mediana</span><span class="chip">Grande</span>
+<div class="btn">Dispensar ahora</div></div>
+<div class="nav"><span class="on">Control</span><span>Horarios</span><span>Historial</span></div></div></div>
+
+<div class="col"><b>3. Control – sin conexión</b><div class="tel"><div class="bar">Mi dispensador<small>DISP-01</small></div><div class="cuerpo">
+<span class="chip" style="background:#e6e9f1">Sin conexión</span><div class="ring" style="--p:72%;background:conic-gradient(#9aa5bf 72%,#dbe2ee 0)"><div><span>72%<br><small>de comida</small></span></div></div>
+<div class="c">Última ración: 19/11 08:00</div>
+<div style="font-size:12px;font-weight:700;margin:16px 0 6px">Tamaño de la porción</div>
+<span class="chip">Chica</span><span class="chip on">Mediana</span><span class="chip">Grande</span>
+<div class="btn" style="background:#b9c2d6">Dispensar ahora</div>
+<div class="c" style="margin-top:8px">El botón se activa cuando el dispensador vuelve a estar en línea.</div></div>
+<div class="nav"><span class="on">Control</span><span>Horarios</span><span>Historial</span></div></div></div>
+
+<div class="col"><b>4. Horarios</b><div class="tel"><div class="bar">Mi dispensador<small>DISP-01</small></div><div class="cuerpo">
+<div class="card"><div><b>08:00</b><small>Porción mediana</small></div><div class="sw on"></div></div>
+<div class="card"><div><b>13:30</b><small>Porción chica</small></div><div class="sw on"></div></div>
+<div class="card"><div><b>20:00</b><small>Porción grande</small></div><div class="sw"></div></div>
+<div class="fab">+</div></div>
+<div class="nav"><span>Control</span><span class="on">Horarios</span><span>Historial</span></div></div></div>
+
+<div class="col"><b>5. Agregar horario</b><div class="tel"><div class="bar">Mi dispensador<small>DISP-01</small></div><div class="cuerpo" style="background:#0006">
+<div style="background:#fff;border-radius:16px;padding:16px;margin-top:40px"><div style="font-size:12px;color:var(--sub)">Hora de la comida</div><div style="font-size:44px;font-weight:700;text-align:center;margin:10px 0">08 : 00</div><div style="font-size:12px;color:var(--sub);margin-bottom:6px">Después eliges la porción</div><div style="text-align:right;font-size:13px;font-weight:700;color:var(--teal)">Cancelar &nbsp;&nbsp; Aceptar</div></div></div>
+<div class="nav"><span>Control</span><span class="on">Horarios</span><span>Historial</span></div></div></div>
+
+<div class="col"><b>6. Historial</b><div class="tel"><div class="bar">Mi dispensador<small>DISP-01</small></div><div class="cuerpo">
+<div class="card"><div><b style="font-size:14px">jue 19/11 · 13:30</b><small>Porción chica · por horario</small></div></div>
+<div class="card"><div><b style="font-size:14px">jue 19/11 · 11:02</b><small>Porción grande · pedida desde la app</small></div></div>
+<div class="card"><div><b style="font-size:14px">jue 19/11 · 08:00</b><small>Porción mediana · por horario</small></div></div>
+<div class="card"><div><b style="font-size:14px">mié 18/11 · 20:00</b><small>Porción grande · por horario</small></div></div></div>
+<div class="nav"><span>Control</span><span>Horarios</span><span class="on">Historial</span></div></div></div>
+
+</div>
+<div class="flow"><b>Navegación.</b> Login (Tomás) → elegir modo y código del dispensador → <code>ControlHostActivity</code> con barra inferior: <code>Control</code> · <code>Horarios</code> · <code>Historial</code>. Desde Horarios, el botón + abre selector de hora y luego de porción. El botón Dispensar se desactiva si el dispensador está sin conexión o sin comida. El aviso de nivel bajo (&lt;20 %) aparece como banner rojo y mensaje emergente dentro de la app.</div>
+</body></html>

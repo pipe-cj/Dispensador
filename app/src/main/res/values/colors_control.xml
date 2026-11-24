@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="ink">#1F2A44</color>
+    <color name="teal">#1B998B</color>
+    <color name="amber">#FFB400</color>
+    <color name="fondo">#F3F6FA</color>
+    <color name="alerta">#D64545</color>
+    <color name="alerta_fondo">#FDECEC</color>
+</resources>
